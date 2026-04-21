@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>BlueHarvest | Teknologi Budidaya</title>
+
+ 
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+
+  <style>
+
+    /* Dasar & Reset */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+
+      font-family: 'Poppins', sans-serif;
+
+      background: #f5f7fa;
+
+      line-height: 1.6;
+
+      color: #222;
+
+      scroll-behavior: smooth;
+
+    }
+
+
+
+    /* Header & Navigasi */
+
+    header {
+
+      position: fixed;
+
+      top: 0; left: 0; right: 0;
+
+      background: rgba(255, 255, 255, 0.95);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 0.8rem 5%;
+
+      z-index: 10000;
+
+    }
+
+    header .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-weight: 800;
+
+      font-size: 1.4rem;
+
+      color: #0f79e0;
+
+    }
+
+    header .logo img { width: 35px; height: 35px; border-radius: 5px; object-fit: cover; }
+
+
+
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+
+    nav ul li a {
+
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      font-size: 0.85rem;
+
+      color: #333;
+
+      text-decoration: none;
+
+      transition: 0.3s;
+
+    }
+
+    nav ul li a:hover, nav ul li a.active { color: #0f79e0; }
+
+
+
+    /* Hero Section */
+
+    .hero {
+
+      height: 85vh;
+
+      background: linear-gradient(rgba(0,35,102,0.65), rgba(0,35,102,0.8)),
+
+                  url('sampul.jpeg') center/cover;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      color: white;
+
+      padding-top: 80px;
+
+    }
+
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin-bottom: 1.5rem; }
+
+    .hero button {
+
+      padding: 12px 35px;
+
+      border-radius: 50px;
+
+      border: 2px solid white;
+
+      background: transparent;
+
+      color: white;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+
+      text-transform: uppercase;
+
+    }
+
+    .hero button:hover { background: white; color: #0f79e0; }
+
+
+
+    /* Section Global */
+
+    section { padding: 80px 5%; max-width: 1300px; margin: 0 auto; }
+
+    h2.section-title { font-size: 2.5rem; font-weight: 900; color: #000d4a; margin-bottom: 30px; text-align: center; }
+
+
+
+    /* Inovasi Section */
+
+    #inovasi {
+
+      background: #0f79e0;
+
+      max-width: 100%;
+
+      color: white;
+
+      padding: 100px 5%;
+
+    }
+
+    #inovasi .section-title { color: white; }
+
+
+
+    .btn-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+
+    .btn-group button {
+
+      padding: 12px 25px;
+
+      border-radius: 30px;
+
+      border: 2px solid rgba(255,255,255,0.5);
+
+      background: transparent;
+
+      color: white;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+
+    }
+
+    .btn-group button.active, .btn-group button:hover { background: white; color: #0f79e0; border-color: white; }
+
+
+
+    /* Layout Detail Box - Diubah ke Vertical (Gambar di atas) */
+
+    .detail-container { display: flex; justify-content: center; width: 100%; }
+
+   
+
+    .product-item {
+
+      display: none;
+
+      background: white;
+
+      width: 100%;
+
+      max-width: 900px;
+
+      border-radius: 25px;
+
+      color: #333;
+
+      overflow: hidden;
+
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+
+      animation: fadeIn 0.5s ease;
+
+    }
+
+
+
+    @keyframes fadeIn {
+
+      from { opacity: 0; transform: translateY(10px); }
+
+      to { opacity: 1; transform: translateY(0); }
+
+    }
+
+
+
+    .item-content { display: flex; flex-direction: column; }
+
+
+
+    .item-image { width: 100%; height: 450px; }
+
+    .item-image img { width: 100%; height: 100%; object-fit: cover; }
+
+
+
+    .item-text {
+
+      padding: 40px;
+
+      text-align: left;
+
+      background: white;
+
+      overflow-y: visible;
+
+    }
+
+
+
+    .item-text h3 { font-size: 2rem; color: #0f79e0; margin-bottom: 20px; font-weight: 900; }
+
+   
+
+    .info-block { margin-bottom: 25px; }
+
+    .info-block h4 { color: #000d4a; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; border-left: 4px solid #0f79e0; padding-left: 10px; }
+
+    .info-block p { color: #444; font-size: 0.95rem; margin-bottom: 10px; text-align: justify; }
+
+   
+
+    .info-block ul { list-style: none; padding: 0; }
+
+    .info-block ul li { position: relative; padding-left: 28px; margin-bottom: 8px; color: #444; font-size: 0.95rem; line-height: 1.5; }
+
+    .info-block ul li::before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: #0f79e0; }
+
+
+
+    .special-box { background: #f0f7ff; padding: 20px; border-radius: 15px; border-left: 5px solid #0f79e0; margin: 20px 0; font-size: 0.9rem; }
+
+    .special-box b { color: #0f79e0; }
+
+
+
+    /* Kontak Section */
+
+    .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+
+    .contact-info .item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+
+    .contact-info .icon { background: #0f79e0; color: white; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+   
+
+    footer { background: #000d4a; color: white; text-align: center; padding: 30px; margin-top: 50px; }
+
+
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+
+      .item-image { height: 250px; }
+
+      .item-text { padding: 25px; }
+
+      header nav { display: none; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+<header>
+
+  <div class="logo">
+
+    <img src="Blueharvest.jpeg" alt="Logo" />
+
+    BlueHarvest
+
+  </div>
+
+  <nav>
+
+    <ul>
+
+      <li><a href="#beranda">Beranda</a></li>
+
+      <li><a href="#tentang-kami">Tentang Kami</a></li>
+
+      <li><a href="#inovasi">Inovasi</a></li>
+
+      <li><a href="#kontak">Kontak Kami</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+
+
+<section class="hero" id="beranda">
+
+  <div class="content">
+
+    <small style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Teknologi Budidaya Berkelanjutan</small>
+
+    <h1>BlueHarvest</h1>
+
+    <button onclick="document.getElementById('tentang-kami').scrollIntoView()">Selengkapnya</button>
+
+  </div>
+
+</section>
+
+
+
+<section id="tentang-kami" style="text-align: center;">
+
+  <h2 class="section-title">Tentang Kami</h2>
+
+  <div style="max-width: 800px; margin: 0 auto;">
+
+      <h3 style="color: #0f79e0; margin-bottom: 15px; font-size: 1.8rem;">BlueHarvest</h3>
+
+      <p style="margin-bottom: 15px; font-size: 1.05rem;">BlueHarvest adalah website informasi yang berfokus pada teknologi budidaya perikanan berkelanjutan. Website ini menyediakan berbagai materi edukatif untuk membantu pembudidaya memahami sistem budidaya modern secara lebih mudah dan praktis.</p>
+
+      <p style="margin-bottom: 15px;">Informasi yang disajikan mencakup berbagai teknologi seperti Bioflok, Aquaponik, Recirculating Aquaculture System (RAS), Polikultur serta manajemen kualitas air dan efisiensi pakan dalam kegiatan budidaya.</p>
+
+      <p>BlueHarvest hadir sebagai media edukasi yang mendukung penerapan budidaya yang efisien, ramah lingkungan, dan berkelanjutan, dengan pendekatan yang sederhana namun tetap berbasis konsep ilmiah.</p>
+
+  </div>
+
+</section>
+
+
+
+<section id="inovasi">
+
+  <h2 class="section-title">Inovasi Kami</h2>
+
+ 
+
+  <div class="btn-group">
+
+    <button class="active" onclick="filterProducts('bioflok', this)">Smart Bioflok</button>
+
+    <button onclick="filterProducts('aquaponik', this)">Aquaponik</button>
+
+    <button onclick="filterProducts('ras', this)">RAS</button>
+
+    <button onclick="filterProducts('polikultur', this)">Polikultur</button>
+
+  </div>
+
+
+
+  <div class="detail-container">
+
+    <div class="product-item" data-category="bioflok">
+
+      <div class="item-content">
+
+        <div class="item-image">
+
+          <img src="bioflok.jpeg" alt="Bioflok">
+
+        </div>
+
+        <div class="item-text">
+
+          <h3>SMART BIOFLOK</h3>
+
+          <div class="info-block">
+
+            <h4>A) Pengertian</h4>
+
+            <p>Bioflok adalah teknologi budidaya perikanan intensif yang memanfaatkan mikroorganisme (bakteri baik) untuk mengubah limbah organik (sisa pakan & kotoran) menjadi gumpalan protein (flok) yang dapat dimakan kembali oleh ikan. Sistem ini mengandalkan aerasi kuat untuk mengubah amonia beracun menjadi pakan, meningkatkan efisiensi pakan, dan hemat air. Sistem ini banyak digunakan pada budidaya ikan seperti nila, lele, dan udang kerena efisien dan ramah lingkungan.</p>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>B) Tujuan</h4>
+
+            <ul>
+
+              <li>Mempermudah monitoring kualitas air</li>
+
+              <li>Mengurangi risiko kematian ikan</li>
+
+              <li>Meningkatkan efisiensi budidaya</li>
+
+              <li>Mendukung budidaya modern berbasis teknologi</li>
+
+            </ul>
+
+            <div class="special-box">
+
+              <p><b>TRADISIONAL:</b>→ Cek air manual 2x/hari → Terlambat → Ikan mati 30%</p>
+
+              <p><b>SMART BIOFLOK:</b> → Monitoring 24/7 otomatis → Respons instan → Survival 95%</p>
+
+            </div>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>C) Konsep Sistem</h4>
+
+            <p>Kolam bioflok dilengkapi sensor: </p>
+
+            <ul>
+
+              <li>a. pH</li>
+
+              <li>b. Suhu</li>
+
+              <li>c. DO (oksigen terlarut)</li>
+
+              <li>d. Amonia</li>
+
+              <li>e. AI menganalisis dan memberi peringatan</li>
+
+              <li>f. Notifikasi muncul jika kondisi air buruk</li>
+
+            </ul>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>D) Cara Kerja</h4>
+
+            <p>Sistem Bioflok bekerja dengan memanfaatkan probiotik dan sumber karbon untuk mengubah limbah (amonia) menjadi bioflok yang berguna sebagai pakan alami, sehingga kualitas air tetap stabil. Sensor (pH, suhu, DO, amonia) memantau kondisi kolam secara real-time, sementara aerator menjaga ketersediaan oksigen dan sirkulasi air. Dengan dukungan sistem smart (otomatis & digital), data dianalisis dan sistem dapat memberikan notifikasi atau melakukan tindakan cepat saat terjadi perubahan kondisi.</p>
+
+            <ul>
+
+              <li>1. Sensor dipasang di kolam/tandon</li>
+
+              <li>2. Sensor membaca kualitas air secara terus-menerus</li>
+
+              <li>3. Data dikirim ke cloud (internet)</li>
+
+              <li>4. Aplikasi menampilkan data real-time</li>
+
+              <li>5. AI menganalisis dan memberi peringatan</li>
+
+              <li>6. Notifikasi muncul jika kondisi air buruk</li>
+
+            </ul>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>E) Keunggulan</h4>
+
+            <ul>
+
+              <li>1. Padat tebar tinggi (produksi lebih banyak)</li>
+
+              <li>2. Hemat air dan ramah lingkungan</li>
+
+              <li>3. Mengurangi limbah budidaya</li>
+
+              <li>4. Pakan lebih efisien (ada pakan alami dari flok)</li>
+
+              <li>5. Pertumbuhan ikan lebih cepat</li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="product-item" data-category="aquaponik">
+
+      <div class="item-content">
+
+        <div class="item-image">
+
+          <img src="aquaponik.jpeg" alt="Aquaponik">
+
+        </div>
+
+        <div class="item-text">
+
+          <h3>AQUAPONIK SMART-CYCLE</h3>
+
+          <div class="info-block">
+
+            <h4>A) Pengertian</h4>
+
+            <p>Sistem aquaponik berkelanjutan SMART-CYCLE BIOFLOK adalah metode budidaya terpadu yang menggabungkan pemeliharaan ikan (akuakultur) dengan penanaman tanaman (hidroponik) dalam satu siklus tertutup, di mana limbah dari ikan dimanfaatkan sebagai nutrisi bagi tanaman, kemudian air yang telah disaring oleh tanaman digunakan kembali untuk budidaya ikan.</p>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>B) Tujuan</h4>
+
+            <p>Menghasilkan sistem budidaya ikan dan tanaman yang efisien, ramah lingkungan, dan berkelanjutan melalui pemanfaatan limbah sebagai sumber nutrisi dalam satu siklus tertutup.</p>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>C) Prinsip Utama</h4>
+
+            <ul>
+
+              <li>Integrasi ekosistem (ikan, tanaman, mikroorganisme)</li>
+
+              <li>Siklus nutrisi alami</li>
+
+              <li>Efisiensi sumber daya (air & pakan)</li>
+
+              <li>Keberlanjutan lingkungan (eco-friendly)</li>
+
+            </ul>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>D) Cara Kerja</h4>
+
+            <p>Sistem aquaponik bekerja dengan prinsip siklus tertutup, di mana ikan, tanaman, dan mikroorganisme saling berhubungan dalam satu aliran yang berkelanjutan.</p>
+
+            <ul>
+
+              <li><strong>1. Pemeliharaan Ikan</strong>
+
+                <ul>
+
+                  <li>Ikan dipelihara di dalam kolam</li>
+
+                  <li>Ikan menghasilkan limbah berupa kotoran dan sisa pakan</li>
+
+                  <li>Limbah tersebut mengandung amonia yang bisa berbahaya jika menumpuk</li>
+
+                </ul>
+
+              </li>
+
+              <li><strong>2. Proses Biologis (Biofilter)</strong>
+
+                <ul>
+
+                  <li>Bakteri baik mengubah amonia menjadi nitrit, lalu menjadi nitrat</li>
+
+                  <li>Nitrat lebih aman bagi ikan dan menjadi nutrisi untuk tanaman</li>
+
+                </ul>
+
+              </li>
+
+              <li><strong>3. Penyerapan oleh Tanaman</strong>
+
+                <ul>
+
+                  <li>Air yang mengandung nutrisi dialirkan ke media tanam</li>
+
+                  <li>Akar tanaman menyerap nitrat sebagai pupuk alami</li>
+
+                  <li>Tanaman membantu membersihkan air</li>
+
+                </ul>
+
+              </li>
+
+              <li><strong>4. Penyaringan Alami</strong>
+
+                <ul>
+
+                  <li>Selain diserap tanaman, akar juga menyaring partikel kecil</li>
+
+                  <li>Air menjadi lebih jernih dan kualitasnya meningkat</li>
+
+                </ul>
+
+              </li>
+
+              <li><strong>5. Sirkulasi Kembali</strong>
+
+                <ul>
+
+                  <li>Air yang sudah bersih dikembalikan ke kolam ikan</li>
+
+                  <li>Proses ini berlangsung terus-menerus (berulang/siklus)</li>
+
+                </ul>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="info-block">
+
+            <h4>E) Keunggulan</h4>
+
+            <ul>
+
+              <li>Hemat air (tidak perlu sering ganti air)</li>
+
+              <li>Tanpa pupuk kimia</li>
+
+              <li>Ramah lingkungan</li>
+
+              <li>Produksi ganda (ikan + tanaman)</li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="product-item" data-category="ras">
+
+      <div class="item-content">
+
+        <div class="item-image">
+
+          <img src="ras.jpeg" alt="Smart RAS">
+
+        </div>
+
+        <div class="item-text">
+
+          <h3>Sistem RAS (Recirculating Aquaculture System)</h3>
+
+         
+
+          <div class="info-block">
+
+            <h4>A) Pengertian</h4>
+
+            <p>Smart RAS (IoT & AI Monitoring) adalah pengembangan dari sistem Recirculating Aquaculture System (RAS) yang menggabungkan teknologi Internet of Things (IoT) dan Artificial Intelligence (AI) untuk memantau dan mengelola budidaya ikan secara otomatis dan real-time.</p>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>B) Tujuan Smart RAS</h4>
+
+            <ul>
+
+              <li><strong>Meningkatkan kualitas air secara otomatis:</strong> Dengan sensor dan sistem IoT, kondisi air seperti pH, suhu, dan oksigen dapat dipantau dan dikontrol secara real-time.</li>
+
+              <li><strong>Mengoptimalkan pertumbuhan ikan:</strong> AI membantu mengatur kondisi lingkungan dan pemberian pakan agar ikan tumbuh lebih cepat dan sehat.</li>
+
+              <li><strong>Mengurangi risiko kematian ikan:</strong> Sistem dapat mendeteksi perubahan kualitas air lebih awal sehingga tindakan bisa dilakukan sebelum terjadi kerugian.</li>
+
+              <li><strong>Meningkatkan efisiensi penggunaan air dan pakan:</strong> RAS menggunakan sistem resirkulasi, sementara AI mengatur pemberian pakan agar tidak berlebihan.</li>
+
+              <li><strong>Mengurangi ketergantungan tenaga kerja manual:</strong> Monitoring dan kontrol dilakukan otomatis melalui perangkat (HP/laptop).</li>
+
+              <li><strong>Mendukung budidaya ikan berbasis teknologi modern:</strong> Mengintegrasikan IoT dan AI dalam akuakultur untuk menghadapi era digital (smart aquaculture).</li>
+
+              <li><strong>Meningkatkan produktivitas dan keuntungan usaha:</strong> Dengan sistem yang stabil dan terkontrol, hasil panen menjadi lebih maksimal.</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>C) Konsep Dasar Smart RAS</h4>
+
+            <p>RAS adalah sistem budidaya ikan dengan sirkulasi air tertutup (air digunakan kembali setelah difilter). Ketika ditambahkan IoT dan AI, sistem ini jadi lebih pintar (smart) karena bisa:</p>
+
+            <ul>
+
+              <li>Memantau kondisi air secara otomatis</li>
+
+              <li>Mengontrol alat tanpa campur tangan manusia</li>
+
+              <li>Memberikan prediksi & rekomendasi</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>D) Komponen Utama Smart RAS</h4>
+
+            <ul>
+
+              <li><strong>a. IoT (Sensor & Monitoring)</strong>
+
+                <p>Sensor dipasang di kolam/tangki untuk membaca: Suhu air, pH, Oksigen terlarut (DO), Amonia (NH₃), dan Kekeruhan. Data dikirim ke Smartphone, Laptop, atau Cloud system.</p>
+
+              </li>
+
+              <li><strong>b. AI (Analisis & Prediksi)</strong>
+
+                <p>Digunakan untuk memprediksi kualitas air, deteksi dini penyakit, dan mengatur pakan otomatis. Contoh: Jika oksigen turun, AI otomatis menyalakan aerator.</p>
+
+              </li>
+
+              <li><strong>c. Aktuator (Pengendali Otomatis)</strong>
+
+                <p>Meliputi Pompa air, Aerator, Heater/pendingin, dan Automatic Feeder.</p>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>E) Alur Kerja Sistem</h4>
+
+            <ul>
+
+              <li>1. Sensor membaca kondisi air</li>
+
+              <li>2. Data dikirim ke sistem (IoT)</li>
+
+              <li>3. AI menganalisis data</li>
+
+              <li>4. Sistem mengambil keputusan otomatis</li>
+
+              <li>5. Aktuator bekerja (misalnya nyalakan aerator)</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>F) Keunggulan Smart RAS</h4>
+
+            <div class="special-box">
+
+              <ul>
+
+                <li>Efisiensi air tinggi</li>
+
+                <li>Mengurangi kematian ikan</li>
+
+                <li>Monitoring 24 jam</li>
+
+                <li>Hemat tenaga kerja</li>
+
+                <li>Produksi lebih stabil</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="product-item" data-category="polikultur">
+
+      <div class="item-content">
+
+        <div class="item-image">
+
+          <img src="polikultur.jpeg" alt="Polikultur">
+
+        </div>
+
+        <div class="item-text">
+
+          <h3>Polikultur</h3>
+
+     
+
+          <div class="info-block">
+
+            <h4>A. Pengertian</h4>
+
+            <p>Polikultur merupakan sistem budidaya yang memelihara lebih dari satu jenis organisme akuatik dalam satu wadah atau ekosistem yang sama. Sistem ini dirancang agar setiap organisme memiliki peran berbeda sehingga dapat saling mendukung dan meningkatkan efisiensi pemanfaatan sumber daya.</p>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>B. Tujuan</h4>
+
+            <ul>
+
+              <li>Meningkatkan produktivitas lahan/kolam</li>
+
+              <li>Memanfaatkan sumber pakan secara optimal</li>
+
+              <li>Mengurangi limbah organik dalam sistem budidaya</li>
+
+              <li>Menciptakan ekosistem yang lebih seimbang</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>C. Prinsip Dasar</h4>
+
+            <p>Sistem polikultur memanfaatkan perbedaan kebiasaan makan (feeding habit) dan zona hidup organisme, sehingga tidak terjadi persaingan yang berlebihan. Contohnya, ikan yang memakan pakan di permukaan dapat dikombinasikan dengan organisme dasar (bottom feeder) yang memanfaatkan sisa pakan.</p>
+
+            <div class="special-box">
+
+              <p><b>Contoh Kombinasi Polikultur:</b></p>
+
+              <ul>
+
+                <li>Ikan lele + ikan nila</li>
+
+                <li>Ikan mas + ikan nila</li>
+
+                <li>Udang + ikan bandeng</li>
+
+                <li>Ikan + tanaman air (akuaponik sederhana)</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>D. Mekanisme Kerja</h4>
+
+            <p>Dalam sistem polikultur:</p>
+
+            <ul>
+
+              <li>Sisa pakan dan limbah dari satu organisme dimanfaatkan oleh organisme lain</li>
+
+              <li>Nutrien dalam air dimanfaatkan secara lebih efisien</li>
+
+              <li>Keseimbangan ekosistem lebih terjaga</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="info-block">
+
+            <h4>E. Keunggulan</h4>
+
+            <ul>
+
+              <li>Produksi lebih tinggi dibanding monokultur</li>
+
+              <li>Efisiensi penggunaan pakan</li>
+
+              <li>Mengurangi pencemaran air</li>
+
+              <li>Diversifikasi hasil panen</li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<section id="kontak">
+
+  <h2 class="section-title">Kontak Kami</h2>
+
+  <div class="contact-container">
+
+    <div class="contact-info">
+
+      <div class="item"><div class="icon"><i class="fa fa-map-marker-alt"></i></div><div><strong>Alamat</strong><br>Fakultas Vokasi Universitas Hasanuddin, Makassar</div></div>
+
+      <div class="item"><div class="icon"><i class="fa fa-envelope"></i></div><div><strong>Email</strong><br>@BlueHarvest.com</div></div>
+
+      <div class="item"><div class="icon"><i class="fa fa-phone"></i></div><div><strong>Telepon</strong><br>0823-4668-5531</div></div>
+
+    </div>
+
+    <div style="flex: 1;">
+
+        <p style="color: #666;">Silahkan hubungi kami untuk informasi lebih lanjut mengenai implementasi teknologi budidaya atau kolaborasi edukasi lainnya.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+    <p>&copy; 2026 BlueHarvest. Seluruh Hak Cipta Dilindungi.</p>
+
+</footer>
+
+
+
+<script>
+
+  function filterProducts(category, btn) {
+
+    document.querySelectorAll('.btn-group button').forEach(b => b.classList.remove('active'));
+
+    btn.classList.add('active');
+
+   
+
+    const items = document.querySelectorAll('.product-item');
+
+    items.forEach(item => {
+
+      if (item.dataset.category === category) {
+
+        item.style.display = "block";
+
+      } else {
+
+        item.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+
+
+  window.onload = () => {
+
+    const defaultBtn = document.querySelector('.btn-group button');
+
+    filterProducts('bioflok', defaultBtn);
+
+  };
+
+</script>
+
+
+
+</body>
+
+</html>
